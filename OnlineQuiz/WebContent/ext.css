@@ -1,0 +1,148 @@
+@charset "ISO-8859-1";
+body{
+	background-color: #e6e6fa;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow:auto;
+}
+.mar{
+	color:blue;
+	behaviour:scroll;
+	scrollamount:5;
+	direction:left;
+}
+.block{
+	 border:2px solid #ff8080;
+	border-style: groove;
+	 border-padding:15px;
+}
+a:hover{
+    color: red;
+}
+a{
+	text-decoration: none;
+}
+.login{  
+        width: 300px;  
+        overflow: hidden;  
+        margin: auto;  
+        margin: 20 0 0 450px;  
+        padding: 80px;    
+        border-radius: 15px ; 
+        border-color:black;  
+        background: #CBC3E3; 
+        justify-content: space-around;
+}
+#log{  
+    width: 100px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 10px;  
+    padding-left: 7px;
+    color:white;  
+    background-color: blue; 
+    float:right;  
+}
+.intp{
+	width:150%;
+	height:40px;
+	border-radius: 5px;
+	border-color: white;
+	font-size:100%;
+}
+.intp:hover{
+	border-color: #400040;
+	box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+}
+#main{
+    margin: 4%;
+    padding: 2%;
+    display:flex;
+    flex-direction: row;
+    text-align: center;
+    border-radius: 5%;
+    justify-content: space-around;
+    overflow-y: hidden;
+}
+.sub{
+    background-color: #dda0dd;
+    margin: 4%;
+    margin-left: -2px;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    border-radius: 4%;
+    padding:2% 2% 2% 2%;
+    box-shadow: 2px 2px 3px 3px;
+    justify-content: space-around;
+    text-align: justify;
+}
+.sub:hover{
+    color: white;
+}
+.nbar {
+  overflow: auto;
+  background-color: #F89880;
+}
+
+.nbar a {
+  float: left;
+  color: gray;
+  text-align: center;
+  padding-left: 10px;
+  padding-right:10px;
+  padding-top:5px;
+  padding-bottom:0px;
+  text-decoration: none;
+}
+
+.drdo {
+  float: right;
+  overflow: auto;
+}
+
+.drdo .drbtn {
+  font-size: 10px;  
+  border: none;
+  outline: none;
+  color: black;
+  padding: 5px 25px;
+  background-color: transparent;
+  font-family: inherit;
+  margin: 0;
+}
+
+.nbar a:hover, .drdo:hover .drbtn {
+  background-color: #F5F5F5;
+}
+
+.drdo-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 90px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  
+}
+
+.drdo-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.drdo-content a:hover {
+  background-color: #ddd;
+}
+
+.drdo:hover .drdo-content {
+  display: block;
+}
+.imgpr {
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  padding: 5px;
+  width: 25px;
+}
