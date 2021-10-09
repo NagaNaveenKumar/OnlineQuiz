@@ -4,10 +4,12 @@ package com.example.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,10 +58,12 @@ public class MainController {
 	@Autowired
 	private ResultsRepository resrepo;
 	
-	@GetMapping("/subjects")
-	public ModelAndView getSubjects() {
+	
+	@GetMapping("/subjects/{std_id}")
+	public ModelAndView getSubjects(@PathVariable("std_id") int std_id) {
 		List<Subject> s=(List<Subject>) subrepo.findAll();
 		ModelAndView mv=new ModelAndView();
+		mv.addObject("std_id",std_id);
 		mv.addObject("subjects",s);
 		mv.setViewName("subjects");
 		System.out.println(mv.getModel());
@@ -90,20 +94,94 @@ public class MainController {
 	
 	/*Student Module*/
 	
+	@PostMapping("/student/register")
+	public ModelAndView registerStudent(@RequestParam("name") String name,@RequestParam("email") String email,@RequestParam("password") String password) {
+		ModelAndView mv=new ModelAndView();
+		Student s=new Student();
+		s.setStd_name(name);
+		s.setStd_password(password);
+		s.setEmail(email);
+		stdrepo.save(s);
+		mv.setViewName("subjects");
+		return mv;
+	}
+	
+	@GetMapping("/student/login")
+	public ModelAndView studentLogin() {
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("message", "");
+		mv.setViewName("login");
+		return mv;
+	}
+	
+	@GetMapping("/check/student/login")
+	public ModelAndView checkloginStudent(@RequestParam("name") String name,@RequestParam("password") String password) {
+		ModelAndView mv=new ModelAndView();
+		Student s=stdrepo.findByNameAndPassword(name, password);
+		System.out.println(s);
+		if(s!=null) {
+			ModelAndView modelandview=new ModelAndView("redirect:/subjects/"+s.getStd_id());
+			return modelandview;
+		}else {
+			mv.addObject("message","Invalid username/password");
+			mv.setViewName("login");
+		}
+		return mv;
+	}
+	
 	@GetMapping("/submitquiz")
 	public ModelAndView getResult() {	
 		ModelAndView mv=new ModelAndView();
 		return mv;
 	}
 
+//	@GetMapping("/getQuestions/{sub_id}")
+//	public ModelAndView getQuestions(@PathVariable int sub_id) {
+//		List<Questions> quests=quesrepo.getAllQuestionsBySubId(sub_id);
+//		ModelAndView mv=new ModelAndView();
+//		mv.addObject("sub_id",sub_id);
+//		mv.addObject("questions", quests);
+//		mv.setViewName("questions");
+//		return mv;
+//	}
+	
 	@GetMapping("/getQuestions/{sub_id}")
-	public ModelAndView getQuestions(@PathVariable int sub_id) {
+	public ModelAndView getQuestions(@PathVariable int sub_id,@RequestParam("studentId") int std_id) {
 		List<Questions> quests=quesrepo.getAllQuestionsBySubId(sub_id);
 		ModelAndView mv=new ModelAndView();
+		mv.addObject("std_id", std_id);
+		mv.addObject("sub_id",sub_id);
 		mv.addObject("questions", quests);
 		mv.setViewName("questions");
 		return mv;
 	}
+	
+	@GetMapping("/getResult")
+	public ModelAndView getResult(HttpServletRequest req) {
+//		int std_id=Integer.parseInt(req.getParameter("studentId"));
+//		int sub_id=Integer.parseInt(req.getParameter("subjectId"));
+		ModelAndView mv=new ModelAndView();
+		String []questionIds=req.getParameterValues("questionId");
+		double result=0.0;
+		for(String questionId:questionIds) {
+			int ques_id=Integer.parseInt(questionId);
+			Questions q=quesrepo.getQuestionsById(ques_id);
+			String selectedOption=req.getParameter("question_"+questionId);
+			String correctOption=q.getCorrect_option();
+			System.out.println("selectedOption:"+selectedOption);
+			System.out.println("correctOption:"+correctOption);
+			if(selectedOption.equals(correctOption)) {
+				result+=1.0;
+			}else {
+				result-=0.25;
+			}
+		}
+		mv.addObject("result",result);
+		mv.setViewName("results");
+		return mv;
+	}
+	
+	
 	
 	/*Expert Module*/
 	

@@ -12,6 +12,7 @@ public class Student {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int std_id;
 	private String std_name;
+	private String email;
 	private String std_password;
 	
 	public int getStd_id() {
@@ -20,6 +21,14 @@ public class Student {
 	public void setStd_id(int std_id) {
 		this.std_id = std_id;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String getStd_name() {
 		return std_name;
 	}
