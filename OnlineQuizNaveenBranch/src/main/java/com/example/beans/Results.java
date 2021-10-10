@@ -14,7 +14,7 @@ public class Results {
 	private int quiz_id;
 	private int std_id;
 	private int sub_id;
-	private float score;
+	private double score;
 	public int getQuiz_id() {
 		return quiz_id;
 	}
@@ -33,10 +33,10 @@ public class Results {
 	public void setSub_id(int sub_id) {
 		this.sub_id = sub_id;
 	}
-	public float getScore() {
+	public double getScore() {
 		return score;
 	}
-	public void setScore(float score) {
+	public void setScore(double score) {
 		this.score = score;
 	}
 	

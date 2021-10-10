@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
 	<c:forEach var="subject" items="${subjects}">
 		<form action="/getQuestions/${subject.subId}">
 			<input type="hidden" name="studentId" value="${std_id}"/>

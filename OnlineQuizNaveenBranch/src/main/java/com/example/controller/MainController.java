@@ -70,27 +70,6 @@ public class MainController {
 		return mv;
 	}
 	
-	@PostMapping("/addsubject")
-	public ModelAndView addSubject(@RequestBody Subject s) {
-		subrepo.save(s);
-		System.out.println(s.getSubId());
-		return new ModelAndView("redirect:/subjects");
-	}
-	
-	@RequestMapping("/addQuestions")
-	public ModelAndView addQuestions(@RequestBody QUestionsDuplicate q) {
-		Questions ques=new Questions();
-		ques.setSub_id(q.getSubId());
-		ques.setQues_description(q.getQuesDescription());
-		ques.setOption1(q.getOption1());
-		ques.setOption2(q.getOption2());
-		ques.setOption3(q.getOption3());
-		ques.setOption4(q.getOption4());
-		ques.setCorrect_option(q.getCorrectOption());
-		quesrepo.save(ques);
-		System.out.println(ques.getQues_id());
-		return new ModelAndView("redirect:/subjects");
-	}
 	
 	/*Student Module*/
 	
@@ -158,8 +137,8 @@ public class MainController {
 	
 	@GetMapping("/getResult")
 	public ModelAndView getResult(HttpServletRequest req) {
-//		int std_id=Integer.parseInt(req.getParameter("studentId"));
-//		int sub_id=Integer.parseInt(req.getParameter("subjectId"));
+		int std_id=Integer.parseInt(req.getParameter("studentId"));
+		int sub_id=Integer.parseInt(req.getParameter("subjectId"));
 		ModelAndView mv=new ModelAndView();
 		String []questionIds=req.getParameterValues("questionId");
 		double result=0.0;
@@ -170,12 +149,20 @@ public class MainController {
 			String correctOption=q.getCorrect_option();
 			System.out.println("selectedOption:"+selectedOption);
 			System.out.println("correctOption:"+correctOption);
+			if(selectedOption==null) {
+				selectedOption="";
+			}
 			if(selectedOption.equals(correctOption)) {
 				result+=1.0;
 			}else {
 				result-=0.25;
 			}
 		}
+		Results res=new Results();
+		res.setStd_id(std_id);
+		res.setSub_id(sub_id);
+		res.setScore(result);
+		resrepo.save(res);
 		mv.addObject("result",result);
 		mv.setViewName("results");
 		return mv;
@@ -184,32 +171,120 @@ public class MainController {
 	
 	
 	/*Expert Module*/
-	
-	@PostMapping("/expert/login")
-	public ModelAndView checkExpert(@RequestParam("name") String name,@RequestParam("password") String password) {
-		Expert e=expertrepo.findByNameAndPassword(name, password);
-		if(e!=null) {
-			System.out.println(e.getExpert_id());
-		}else {
-			System.out.println(e);
-		}
+	@GetMapping("/expertdashboard")
+	public ModelAndView expertDashboard() {
 		ModelAndView mv=new ModelAndView();
-		mv.setViewName("subjects");
+		mv.setViewName("/expertdashboard");
 		return mv;
 	}
+	
+	@GetMapping("/add/subject")
+	public ModelAndView addSubject() {
+		ModelAndView mv=new ModelAndView();
+		List<Subject> subjects=subrepo.findAll();
+		mv.addObject("subjects", subjects);
+		mv.setViewName("addsubjects");
+		return mv;
+	}
+	
+	@GetMapping("/addsubject")
+	public ModelAndView addSubject(@RequestParam("subjectName") String subjectName) {
+		System.out.println(subjectName);
+		Subject s=new Subject();
+		s.setSubName(subjectName);
+		subrepo.save(s);
+		System.out.println(s.getSubId());
+		return new ModelAndView("redirect:/add/subject");
+	}
+	
+	@GetMapping("/add/question")
+	public ModelAndView addQuestion() {
+		ModelAndView mv=new ModelAndView();
+		List<Subject> subjects=subrepo.findAll();
+		mv.addObject("subjects", subjects);
+		mv.setViewName("addquestions");
+		return mv;
+	}
+	
+	@RequestMapping("/addquestions")
+	public ModelAndView addQuestions(HttpServletRequest req) {
+		Questions ques=new Questions();
+		String subName=req.getParameter("subjectName");
+		String quesdescription=req.getParameter("questiondescription");
+		String option1=req.getParameter("option1");
+		String option2=req.getParameter("option2");
+		String option3=req.getParameter("option3");
+		String option4=req.getParameter("option4");
+		String correctoption=req.getParameter("correctoption");
+		System.out.println(subName);
+		Subject subject=subrepo.getByName(subName);
+		System.out.println(subject);
+		ques.setSub_id(subject.getSubId());
+		ques.setQues_description(quesdescription);
+		ques.setOption1(option1);
+		ques.setOption2(option2);
+		ques.setOption3(option3);
+		ques.setOption4(option4);
+		ques.setCorrect_option(correctoption);
+		quesrepo.save(ques);
+		System.out.println(ques.getQues_id());
+		return new ModelAndView("redirect:/expertdashboard");
+	}
+	
+	@GetMapping("/expert/login")
+	public ModelAndView expertLogin() {
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("message", "");
+		mv.setViewName("expertlogin");
+		return mv;
+	}
+	
+	@GetMapping("/check/expert/login")
+	public ModelAndView checkExpert(@RequestParam("name") String name,@RequestParam("password") String password) {
+		ModelAndView mv=new ModelAndView();
+		Expert e=expertrepo.findByNameAndPassword(name, password);
+		System.out.println(e);
+		if(e!=null) {
+			ModelAndView modelandview=new ModelAndView("redirect:/expertdashboard");
+			return modelandview;
+		}else {
+			mv.addObject("message","Invalid username/password");
+			mv.setViewName("expertlogin");
+		}
+		return mv;
+	}
+	
+	
 	
 	/*Admin Module*/
 	
-	@PostMapping("/admin/login")
-	public ModelAndView checkAdmin(@RequestParam("name") String name,@RequestParam("password") String password) {
-		Admin a=adminrepo.findByNameAndPassword(name, password);
-		if(a!=null) {
-			System.out.println(a.getAdmin_id());
-		}
+	@GetMapping("/admindashboard")
+	public ModelAndView adminDashboard() {
+		return new ModelAndView("/admindashboard");
+	}
+	
+	@GetMapping("/admin/login")
+	public ModelAndView adminLogin() {
 		ModelAndView mv=new ModelAndView();
-		mv.setViewName("subjects");
+		mv.addObject("message", "");
+		mv.setViewName("adminlogin");
 		return mv;
 	}
+	
+	@GetMapping("/check/admin/login")
+	public ModelAndView checkAdmin(@RequestParam("name") String name,@RequestParam("password") String password) {
+		ModelAndView mv=new ModelAndView();
+		Admin a=adminrepo.findByNameAndPassword(name, password);
+		if(a!=null) {
+			ModelAndView modelandview=new ModelAndView("redirect:/admindashboard/");
+			return modelandview;
+		}else {
+			mv.addObject("message","Invalid username/password");
+			mv.setViewName("adminlogin");
+		}
+		return mv;
+	}
+	
 	
 	/*Add Expert*/
 	@PostMapping("/add/expert")
@@ -248,13 +323,31 @@ public class MainController {
 		return new ModelAndView("redirect:/subjects");
 	}
 	
+	@GetMapping("/view/students")
+	public ModelAndView viewStudents() {
+		ModelAndView mv=new ModelAndView();
+		List<Student> students=stdrepo.findAll();
+		mv.addObject("students", students);
+		mv.setViewName("studentlist");
+		return mv;
+	}
+	
+	@GetMapping("/view/experts")
+	public ModelAndView viewExperts() {
+		ModelAndView mv=new ModelAndView();
+		List<Expert> experts=expertrepo.findAll();
+		mv.addObject("experts", experts);
+		mv.setViewName("expertlist");
+		return mv;
+	}
+	
 	/*View Results*/
 	@GetMapping("/view/results")
 	public ModelAndView viewResults() {
 		ModelAndView mv=new ModelAndView();
 		List<Results> results=resrepo.findAll();
-		System.out.println(results);
-		mv.setViewName("subjects");
+		mv.addObject("results", results);
+		mv.setViewName("studentresults");
 		return mv;
 	}
 	
