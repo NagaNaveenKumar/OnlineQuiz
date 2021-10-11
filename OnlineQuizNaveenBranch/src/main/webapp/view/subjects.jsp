@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Welcome Student</title>
+<title>Expert Dashboard</title>
 </head>
   <style><%@include file="/view/css/subjects.css"%></style>
 <body>

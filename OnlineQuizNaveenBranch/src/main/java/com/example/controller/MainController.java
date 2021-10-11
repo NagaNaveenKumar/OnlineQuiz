@@ -88,16 +88,14 @@ public class MainController {
 	
 	/*Student Module*/
 	
-	@PostMapping("/student/register")
+	@RequestMapping("/student/register")
 	public ModelAndView registerStudent(@RequestParam("name") String name,@RequestParam("email") String email,@RequestParam("password") String password) {
-		ModelAndView mv=new ModelAndView();
 		Student s=new Student();
 		s.setStd_name(name);
 		s.setStd_password(password);
 		s.setEmail(email);
 		stdrepo.save(s);
-		mv.setViewName("subjects");
-		return mv;
+		return new ModelAndView("redirect:/subjects/"+s.getStd_id());
 	}
 	
 	@GetMapping("/student/login")

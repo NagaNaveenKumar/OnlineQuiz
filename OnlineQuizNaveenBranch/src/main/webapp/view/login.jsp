@@ -34,25 +34,23 @@
 <div class="container" id="container">
 <div class="form-container sign-up-container">
 
-<form action="<%= request.getContextPath() %>/SignUp" method = "post">
+<form action="/student/register"  >
 	<h1>Create Account</h1>
 	
 	<span>or use your email for registration</span>
-	<input type="text" name="userName" placeholder="Name">
-	<input type="email" name="email" placeholder="Email">
-	<input type="password" name="password" placeholder="Password">
-	<button>SignUp</button>
+	<input type="text" name="name" placeholder="name">
+	<input type="email" name="email" placeholder="email">
+	<input type="password" name="password" placeholder="password">
+	<button type="submit">SignUp</button>
 </form>
 </div>
 <div class="form-container sign-in-container">
-	<form action="/check/student/login">
+	<form action="/check/student/login" >
 		<h1>Sign In</h1>
 		
 	<span>or use your account</span>
 	<input type="text" name="name" placeholder="Email" required minlength="6">
 	<input type="password" name="password" placeholder="Password" required minlength="4">
-	
-
 	<button type="submit">Sign In</button>
 	</form>
 </div> 
