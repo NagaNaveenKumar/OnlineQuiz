@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Add question</title>
@@ -17,11 +17,11 @@
 </ul>
 
 
-<wrap>
-  <card>
-    <tag>
+<div class="wrap">
+  <div class="card">
+    <div class="tag">
       Add question
-    </tag>
+    </div>
     <form action="/addquestions">
 		Choose any subject:<br/>
 		<c:forEach var="subject" items="${subjects}">
@@ -41,8 +41,8 @@
 		<input type="text" name="correctoption"/><br/>
 		<input type="submit"/>
 	</form>
-  </card>
-</wrap>
+  </div>
+</div>
 	
 </body>
 </html>

@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
 	<meta charset="utf-8" />
@@ -25,10 +25,10 @@
 <table class="table-fill">
 <thead>
 <tr>
-<th class="text-left">ID</th>
-<th class="text-left">Name</th>
-<th class="text-left">Email</th>
-<th class="text-left">Delete</th>
+<th scope="col" class="text-left">ID</th>
+<th scope="col" class="text-left">Name</th>
+<th scope="col" class="text-left">Email</th>
+<th scope="col" class="text-left">Delete</th>
 </tr>
 </thead>
 <tbody class="table-hover">

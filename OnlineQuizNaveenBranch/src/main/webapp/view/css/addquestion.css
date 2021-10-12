@@ -39,7 +39,7 @@ li a:hover:not(.active) {
   background-color: black;
 }
 
-card {
+.card {
   display: block;
   position: relative;
   height: 500px;
@@ -48,7 +48,7 @@ card {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 }
 
-tag {
+div .tag {
   display: block;
   padding: 8px 14px;
   position: absolute;
@@ -59,7 +59,7 @@ tag {
   border-top-right-radius: 7px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 
-  &::after {
+/*   &::after {
     display: block;
     content: "";
     height: 14px;
@@ -69,10 +69,10 @@ tag {
     right: 0;
     bottom: -14px;
     border-bottom-right-radius: 14px;
-  }
+  } */
 }
 
-wrap {
+.wrap {
   display: grid;
   align-content: center;
   justify-content: center;
