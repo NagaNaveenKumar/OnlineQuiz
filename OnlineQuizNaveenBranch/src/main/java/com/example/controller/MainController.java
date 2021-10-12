@@ -86,7 +86,7 @@ public class MainController {
 	}
 	
 	
-	/*Student Module*/
+//	/Student Module/
 	
 	@RequestMapping("/student/register")
 	public ModelAndView registerStudent(@RequestParam("name") String name,@RequestParam("email") String email,@RequestParam("password") String password) {
@@ -183,7 +183,7 @@ public class MainController {
 	
 	
 	
-	/*Expert Module*/
+//	/Expert Module/
 	@GetMapping("/expertdashboard")
 	public ModelAndView expertDashboard() {
 		ModelAndView mv=new ModelAndView();
@@ -267,9 +267,9 @@ public class MainController {
 		return mv;
 	}
 	
-	
-	
-	/*Admin Module*/
+//	
+//	
+//	/Admin Module/
 	
 	@GetMapping("/admindashboard")
 	public ModelAndView adminDashboard() {
@@ -298,8 +298,23 @@ public class MainController {
 		return mv;
 	}
 	
+//	
+//	/Add Expert/
 	
-	/*Add Expert*/
+	@GetMapping("/addexpert")
+	public ModelAndView addExpert() {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("addexpert");
+		return mv;
+	}
+	
+	@GetMapping("/addstudent")
+	public ModelAndView addStudent() {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("addstudent");
+		return mv;
+	}
+	
 	@PostMapping("/add/expert")
 	public ModelAndView addExpert(@RequestParam("name") String name,@RequestParam("password") String password) {
 		Expert e=new Expert();
@@ -307,33 +322,34 @@ public class MainController {
 		e.setExpert_password(password);
 		expertrepo.save(e);
 		ModelAndView mv=new ModelAndView();
-		mv.setViewName("subjects");
-		return mv;
+		return new ModelAndView("redirect:/admindashboard");
 	}
 	
-	/*Delete Expert*/
+//	/Delete Expert/
 	@GetMapping("/delete/expert")
-	public void deleteExpert(@RequestParam("id")int id) {
-		expertrepo.deleteById(id);
+	public ModelAndView deleteExpert(@RequestParam("id")String id) {
+		int expert_id=Integer.parseInt(id);
+		expertrepo.deleteById(expert_id);
+		return new ModelAndView("redirect:/admindashboard");
 	}
 	
-	/*Add Student*/
+//	/Add Student/
 	@PostMapping("/add/student")
-	public ModelAndView addStudent(@RequestParam("name") String name,@RequestParam("password") String password) {
+	public ModelAndView addStudent(@RequestParam("name") String name,@RequestParam("password") String password,@RequestParam("email")String email) {
 		Student s=new Student();
 		s.setStd_name(name);
 		s.setStd_password(password);
+		s.setEmail(email);
 		stdrepo.save(s);
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("subjects");
-		return mv;
+		return new ModelAndView("redirect:/admindashboard");
 	}
 	
-	/*Delete Student*/
+//	/Delete Student/
 	@GetMapping("/delete/student")
-	public ModelAndView deleteStudent(@RequestParam("id")int id) {
-		stdrepo.deleteById(id);
-		return new ModelAndView("redirect:/admindashboard/");
+	public ModelAndView deleteStudent(@RequestParam("id")String id) {
+		int std_id=Integer.parseInt(id);
+		stdrepo.deleteById(std_id);
+		return new ModelAndView("redirect:/admindashboard");
 	}
 	
 	@GetMapping("/view/students")
@@ -353,8 +369,8 @@ public class MainController {
 		mv.setViewName("expertlist");
 		return mv;
 	}
-	
-	/*View Results*/
+//	
+//	/View Results/
 	@GetMapping("/view/results")
 	public ModelAndView viewResults() {
 		ModelAndView mv=new ModelAndView();
@@ -363,8 +379,8 @@ public class MainController {
 		mv.setViewName("studentresults");
 		return mv;
 	}
-	
-	/*Controller Module*/
+//	
+//	/Controller Module/
 	@PostMapping("/controller/login")
 	public ModelAndView checkController(@RequestParam("name") String name,@RequestParam("password") String password) {
 		ModelAndView mv=new ModelAndView();
@@ -374,8 +390,8 @@ public class MainController {
 		}
 		return new ModelAndView("redirect:/subjects");
 	}
-	
-	/*Add Admin*/
+//	
+//	/Add Admin/
 	@PostMapping("/add/admin")
 	public ModelAndView addAdmin(@RequestParam("name") String name,@RequestParam("password") String password) {
 		ModelAndView mv=new ModelAndView();

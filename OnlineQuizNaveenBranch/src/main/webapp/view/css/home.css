@@ -3,7 +3,8 @@
   margin:0
 }
 body{
-	background-color:#6666ff;
+	background: rgb(146,87,204);
+background: linear-gradient(90deg, rgba(146,87,204,1) 0%, rgba(158,55,236,1) 40%, rgba(0,212,255,1) 100%);
 }
 ul {
   list-style-type: none;

@@ -41,17 +41,34 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width:300px;
-  height:300px;
+  height:250px;
   margin-top:100px;
-  margin-left:1000px;
+  margin-left:250px;
   border-radius: 8px;
   background-color:white;
 }
 h1{
 padding-bottom:20px;
 }
-</style>
+.body{
 
+margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+.tt{
+
+  margin-top:100px;
+font-size: 250%;
+color:white;
+}
+</style>
+<div class="body">
+<div class="tt">
+
+<h1>Welcome To Quiz,</h1>
+<h5>Time to test your knowledge</h5>
+</div>
 
 <div class="card">
 <div class="container">
@@ -66,6 +83,7 @@ padding-bottom:20px;
         
     </form>
   </div>
+</div>
 </div>
 </div>
 </body>

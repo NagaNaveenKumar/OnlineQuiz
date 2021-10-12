@@ -1,13 +1,32 @@
+
+
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add Student</title>
 </head>
+
+  <style><%@include file="/view/css/addquestion.css"%></style>
 <body>
-	<form action="/add/student" method="post">
+
+<ul>
+  <li><a class="active" href="#home">Online Quiz</a></li>
+  <li style="float:right"><a href="/">Logout</a></li>
+</ul>
+
+
+<wrap>
+  <card>
+    <tag>
+      Add Student
+    </tag>
+    <form action="/add/student" method="post">
 		Name:<br/>
 		<input type="text" name="name"/><br/>
 		Email:<br/>
@@ -18,5 +37,8 @@
 		<input type="password" name="confirm-password"/><br/>
 		<input type="submit"/>
 	</form>
+  </card>
+  
+	
 </body>
 </html>
