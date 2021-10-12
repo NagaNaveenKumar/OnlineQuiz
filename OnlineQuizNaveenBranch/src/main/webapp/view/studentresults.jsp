@@ -27,10 +27,10 @@
 <table class="table-fill">
 <thead>
 <tr>
-<th class="text-left">Quiz Id</th>
-<th class="text-left">Student Id</th>
-<th class="text-left">Subject Id</th>
-<th class="text-left">Score</th>
+<th scope="col" class="text-left">Quiz Id</th>
+<th scope="col" class="text-left">Student Id</th>
+<th scope="col" class="text-left">Subject Id</th>
+<th scope="col" class="text-left">Score</th>
 </tr>
 </thead>
 <tbody class="table-hover">
