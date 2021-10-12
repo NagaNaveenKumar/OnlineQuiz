@@ -25,6 +25,7 @@
 <h3>Expert List</h3>
 </div>
 <table class="table-fill">
+<caption>List of Experts</caption>
 <thead>
 <tr>
 <th scope="col" class="text-left">ID</th>

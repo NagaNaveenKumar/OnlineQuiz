@@ -23,6 +23,7 @@
 <h3>Student List</h3>
 </div>
 <table class="table-fill">
+<caption>List of Students</caption>
 <thead>
 <tr>
 <th scope="col" class="text-left">ID</th>

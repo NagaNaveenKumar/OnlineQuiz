@@ -25,6 +25,7 @@
 <h3>Result List</h3>
 </div>
 <table class="table-fill">
+<caption>ScoreCard</caption>
 <thead>
 <tr>
 <th scope="col" class="text-left">Quiz Id</th>
