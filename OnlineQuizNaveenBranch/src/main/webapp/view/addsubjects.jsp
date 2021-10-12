@@ -19,17 +19,17 @@
 </ul>
 
 
-<wrap>
-  <card>
-    <tag>
+<div class="wrap">
+  <div class="card">
+    <div class="tag">
       Add Subject
-    </tag>
+    </div>
     
 List of subjects available:
 <c:forEach var="subject" items="${subjects}">
 		<div class="card">
   			<div class="container">
-    			<h4><b>${subject.subName}</b></h4>    				 
+    			<h4><strong>${subject.subName}</strong></h4>    				 
   			</div>
 		</div>
 </c:forEach>
@@ -38,9 +38,8 @@ Add New Subject:
 	<input type="text" name="subjectName"/><br/>
 	<input type="submit"/>
 </form>
-	</form>
-  </card>
-</wrap>
+  </div>
+</div>
 	
 </body>
 </html>
