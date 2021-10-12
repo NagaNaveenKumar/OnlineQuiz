@@ -333,7 +333,7 @@ public class MainController {
 	@GetMapping("/delete/student")
 	public ModelAndView deleteStudent(@RequestParam("id")int id) {
 		stdrepo.deleteById(id);
-		return new ModelAndView("redirect:/subjects");
+		return new ModelAndView("redirect:/admindashboard/");
 	}
 	
 	@GetMapping("/view/students")

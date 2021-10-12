@@ -19,7 +19,7 @@
 		<a href="/" id="submit" class="submitBtn">
 		LogOut
 		</a>
-      
+
     </div>
 		
 	</div>

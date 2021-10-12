@@ -5,14 +5,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Expert Dashboard</title>
+<title>Welcome Student</title>
 </head>
   <style><%@include file="/view/css/subjects.css"%></style>
 <body>
 <ul>
   <li><a class="active" href="#home">Online Quiz</a></li>
-  <li style="float:right"><a href="http://localhost:8092/">Logout</a></li>
+  <li style="float:right"><a href="/">Logout</a></li>
 </ul>
+	<h3 style="text-align:center;margin-top:10px">These are the list of categories available with us. Choose the topics as per your liking and click on the start quiz button to take the quiz.</h3>
 	<c:forEach var="subject" items="${subjects}">
 	
 		<form action="/getQuestions/${subject.subId}">
@@ -20,7 +21,7 @@
   			<div class="container">
     			<h4><b>${subject.subName}</b></h4>    				 
 			
-   				 <button type="submit" class="button button">Start</button>
+   				 <button type="submit" class="button button">Start Quiz</button>
   			</div>
 		</div>
 			<input type="hidden" name="studentId" value="${std_id}"/>		</form>

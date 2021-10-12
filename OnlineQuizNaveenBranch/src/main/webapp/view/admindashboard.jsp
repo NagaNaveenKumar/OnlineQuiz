@@ -51,6 +51,22 @@
         <a class="card__link" href="/view/results">Click here <i class="fas fa-arrow-right"></i></a>
       </p>
     </div>
+     <div class="card card-4">
+      <div class="card__icon"><i class="fas fa-bolt"></i></div>
+      <p class="card__exit"><i class="fas fa-times"></i></p>
+      <h2 class="card__title">To Add Students</h2>
+      <p class="card__apply">
+        <a class="card__link" href="/addstudent">Click here <i class="fas fa-arrow-right"></i></a>
+      </p>
+    </div>
+     <div class="card card-5">
+      <div class="card__icon"><i class="fas fa-bolt"></i></div>
+      <p class="card__exit"><i class="fas fa-times"></i></p>
+      <h2 class="card__title">To Add Experts</h2>
+      <p class="card__apply">
+        <a class="card__link" href="/addexpert">Click here <i class="fas fa-arrow-right"></i></a>
+      </p>
+    </div>
   </div>
 </div>
 </body>
