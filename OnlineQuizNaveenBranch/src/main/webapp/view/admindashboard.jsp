@@ -18,7 +18,7 @@
 
 <ul>
   <li><a class="active" href="#home">Online Quiz</a></li>
-  <li style="float:right"><a href="http://localhost:8092/">Logout</a></li>
+  <li style="float:right"><a href="/">Logout</a></li>
 </ul>
 
 <div class="main-container">

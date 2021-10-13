@@ -40,9 +40,10 @@ import com.example.repository.SubjectRepository;
 @Controller
 public class MainController {
 	
-	final String EXPERT_LOGIN="expertlogin";
-	final String ADMIN_LOGIN="adminlogin";
-	final String REDIRECTOADMINDASHBOARD="redirect:/expertdashboard";
+	final String EXPERTLOGIN="expertlogin";
+	final String ADMINLOGIN="adminlogin";
+	final String REDIRECTTOED="redirect:/expertdashboard";
+	final String REDIRECTTOAD="redirect:/admindashboard";
 	
 	@Autowired
 	private SubjectRepository subrepo;
@@ -69,12 +70,12 @@ public class MainController {
 	}
 	@RequestMapping("/expertlogin")
 	public ModelAndView loginasexpert() {
-		return new ModelAndView(EXPERT_LOGIN);
+		return new ModelAndView(EXPERTLOGIN);
 	}
 	
 	@RequestMapping("/adminlogin")
 	public ModelAndView loginasadmin() {
-		return new ModelAndView(ADMIN_LOGIN);
+		return new ModelAndView(ADMINLOGIN);
 	}
 	
 	@GetMapping("/subjects/{std_id}")
@@ -215,7 +216,7 @@ public class MainController {
 		ques.setOption4(option4);
 		ques.setCorrect_option(correctoption);
 		quesrepo.save(ques);
-		return new ModelAndView("redirect:/expertdashboard");
+		return new ModelAndView(REDIRECTTOED);
 	}
 	
 	
@@ -225,7 +226,7 @@ public class MainController {
 		ModelAndView mv=new ModelAndView();
 		Expert e=expertrepo.findByNameAndPassword(name, password);
 		if(e!=null) {
-			return new ModelAndView("redirect:/expertdashboard");
+			return new ModelAndView(REDIRECTTOED);
 		}else {
 			mv.setViewName("expertlogin");
 		}
@@ -247,10 +248,9 @@ public class MainController {
 		ModelAndView mv=new ModelAndView();
 		Admin a=adminrepo.findByNameAndPassword(name, password);
 		if(a!=null) {
-			return new ModelAndView(REDIRECTOADMINDASHBOARD);
+			return new ModelAndView(REDIRECTTOAD);
 		}else {
-			mv.addObject("message","Invalid username/password");
-			mv.setViewName("adminlogin");
+			mv.setViewName(ADMINLOGIN);
 		}
 		return mv;
 	}
@@ -274,7 +274,7 @@ public class MainController {
 		e.setExpert_name(name);
 		e.setExpert_password(password);
 		expertrepo.save(e);
-		return new ModelAndView(REDIRECTOADMINDASHBOARD);
+		return new ModelAndView(REDIRECTTOAD);
 	}
 	
 //	/Delete Expert/
@@ -282,7 +282,7 @@ public class MainController {
 	public ModelAndView deleteExpert(@RequestParam("id")String id) {
 		int expertid=Integer.parseInt(id);
 		expertrepo.deleteById(expertid);
-		return new ModelAndView(REDIRECTOADMINDASHBOARD);
+		return new ModelAndView(REDIRECTTOAD);
 	}
 	
 //	/Add Student/
@@ -293,7 +293,7 @@ public class MainController {
 		s.setStd_password(password);
 		s.setEmail(email);
 		stdrepo.save(s);
-		return new ModelAndView(REDIRECTOADMINDASHBOARD);
+		return new ModelAndView(REDIRECTTOAD);
 	}
 	
 //	/Delete Student/
@@ -301,7 +301,7 @@ public class MainController {
 	public ModelAndView deleteStudent(@RequestParam("id")String id) {
 		int stdid=Integer.parseInt(id);
 		stdrepo.deleteById(stdid);
-		return new ModelAndView("redirect:/admindashboard");
+		return new ModelAndView(REDIRECTTOAD);
 	}
 	
 	@GetMapping("/view/students")
@@ -333,13 +333,13 @@ public class MainController {
 	}
 //	
 //	/Controller Module/
-	@PostMapping("/controller/login")
-	public ModelAndView checkController(@RequestParam("name") String name,@RequestParam("password") String password) {
-		if(name.equals("appcontroller") && password.equals("controller@123")) {
-			return new ModelAndView("redirect:/subjects");
-		}
-		return new ModelAndView("redirect:/subjects");
-	}
+//	@PostMapping("/controller/login")
+//	public ModelAndView checkController(@RequestParam("name") String name,@RequestParam("password") String password) {
+//		if(name.equals("appcontroller") && password.equals("controller@123")) {
+//			return new ModelAndView("redirect:/subjects");
+//		}
+//		return new ModelAndView("redirect:/subjects");
+//	}
 //	
 //	/Add Admin/
 	@PostMapping("/add/admin")
