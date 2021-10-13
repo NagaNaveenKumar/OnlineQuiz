@@ -18,7 +18,7 @@
     <form action="/addquestions">
     	<fieldset>
 		<legend>Choose any subject</legend>
-		<c:forEach var="subject" items="${subjects}">
+		<c:forEach var="subject" items="${sbs}">
 				
 				<input type="radio" name="subjectName" value="${subject.subName}">${subject.subName}<br/>
 		</c:forEach>

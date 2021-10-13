@@ -14,7 +14,7 @@
   <li style="float:right"><a href="/">Logout</a></li>
 </ul>
 	<h3 style="text-align:center;margin-top:10px">These are the list of categories available with us. Choose the topics as per your liking and click on the start quiz button to take the quiz.</h3>
-	<c:forEach var="subject" items="${subjects}">
+	<c:forEach var="subject" items="${subs}">
 	
 		<form action="/getQuestions/${subject.subId}">
 		<div class="card">

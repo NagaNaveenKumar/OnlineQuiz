@@ -22,7 +22,7 @@
     </div>
     
 
-<c:forEach var="subject" items="${subjects}">
+<c:forEach var="subject" items="${subcs}">
 <div class="menu-container">
 	<nav class="menu">
 		<a href="#" class="menu-item">
