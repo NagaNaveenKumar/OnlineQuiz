@@ -12,33 +12,34 @@
 <title>Add Expert</title>
 </head>
 
-  <style><%@include file="/view/css/addquestion.css"%></style>
+  <style><%@include file="/view/css/addexpert.css"%></style>
 <body>
 
-<ul>
-  <li><a class="active" href="#home">Online Quiz</a></li>
-  <li style="float:right"><a href="/">Logout</a></li>
-</ul>
 
-
-<wrap>
-  <card>
-    <tag>
-      Add Expert
-    </tag>
-    
-    <form action="/add/expert" method="post">
-		Name:<br/>
-		<input type="text" name="name"/><br/>
-		Password:<br/>
-		<input type="password" name="password"/><br/>
-		Confirm password:<br/>
-		<input type="password" name="confirm-password"/><br/>
-		<input type="submit"/>
-	</form>
-  </card>
-  
-</wrap>
+<div class="center">
+  <h1>Add Expert</h1>
+  <form action="/add/expert/" method="post">
+    <div class="inputbox">
+      <input type="text" required="required" name="name">
+      <span>User Name</span>
+    </div>
+     <div class="inputbox">
+      <input type="email" required="required" name="email">
+      <span>Email</span>
+    </div>
+    <div class="inputbox">
+      <input type="text" required="required" name="password">
+      <span>Password</span>
+    </div>
+    <div class="inputbox">
+      <input type="text" required="required">
+      <span>Confirm Password</span>
+    </div>
+    <div class="inputbox" style="background-color:blue">
+      <input type="submit" value="submit">
+    </div>
+  </form>
+</div>
 	
 </body>
 </html>

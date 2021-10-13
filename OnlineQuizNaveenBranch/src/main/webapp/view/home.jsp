@@ -11,17 +11,7 @@
 </head>
 
   <style><%@include file="/view/css/home.css"%></style>
-<body>
-
-<ul>
-  <li><a class="active" href="/">Online Quiz</a></li>
-  <li style="float:right"><a href="/adminlogin">Admin</a></li>
-  <li style="float:right"><a href="/expertlogin">Expert</a></li>
-</ul>
-
-
-
-<style>
+  <style>
 .container {
   height: 200px;
   width:auto;
@@ -63,6 +53,16 @@ font-size: 250%;
 color:white;
 }
 </style>
+  
+<body>
+
+<ul>
+  <li><a class="active" href="/">Online Quiz</a></li>
+  <li style="float:right"><a href="/adminlogin">Admin</a></li>
+  <li style="float:right"><a href="/expertlogin">Expert</a></li>
+</ul>
+
+
 <div class="body">
 <div class="tt">
 

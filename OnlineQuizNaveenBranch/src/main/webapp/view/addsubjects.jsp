@@ -10,36 +10,38 @@
 <title>Add Subject</title>
 </head>
 
-  <style><%@include file="/view/css/addquestion.css"%></style>
+  <style><%@include file="/view/css/addsubject.css"%></style>
 <body>
 
-<ul>
-  <li><a class="active" href="#home">Online Quiz</a></li>
-  <li style="float:right"><a href="/">Logout</a></li>
-</ul>
 
 
-<div class="wrap">
-  <div class="card">
-    <div class="tag">
-      Add Subject
+
+    <div style="text-align:center;color:white">
+      Add Subject<br/>
+      List of subjects available:
     </div>
     
-List of subjects available:
+
 <c:forEach var="subject" items="${subjects}">
-		<div class="card">
-  			<div class="container">
-    			<h4><strong>${subject.subName}</strong></h4>    				 
-  			</div>
-		</div>
-</c:forEach>
-Add New Subject:
-<form action="/addsubject">
-	<input type="text" name="subjectName"/><br/>
-	<input type="submit"/>
-</form>
-  </div>
+<div class="menu-container">
+	<nav class="menu">
+		<a href="#" class="menu-item">
+				<span class="menu-item-title">${subject.subName}</span>
+		</a>
+	</nav>
 </div>
-	
+</c:forEach>
+<div class="center">
+<h1>Add New Subject</h1>
+  <form action="/addsubject">
+    <div class="inputbox">
+      <input type="text" required="required" name="subjectName">
+       <span>Subject Name</span>
+	</div>
+    <div class="inputbox" style="background-color:blue">
+      <input type="submit" value="submit">
+    </div>
+  </form>
+</div>
 </body>
 </html>

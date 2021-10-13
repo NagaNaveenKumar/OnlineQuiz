@@ -1,80 +1,98 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+* { box-sizing: border-box; }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+html { height: 100%; }
+
+body {
+  height: 100%;
+  font-family: Roboto, san-serif;
+  font-weight: 300;
+  background-color: #f5f6f7;
+
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: black;
-}
 
-li {
-  float: left;
-  border-right:1px solid black;
-}
-
-li:last-child {
-  border-right: none;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #333;
-}
-
-.active {
-  background-color: black;
-}
-
-.card {
-  display: block;
-  position: relative;
-  height: 500px;
-  width: 350px;
-  padding:50px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-}
-
-div .tag {
-  display: block;
-  padding: 8px 14px;
+/* Form element setup */
+form {
   position: absolute;
-  right: -14px;
-  top: 20px;
-  background-color: darkblue;
-  color: dodgerblue;
-  border-top-right-radius: 7px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-
-/*   &::after {
-    display: block;
-    content: "";
-    height: 14px;
-    width: 14px;
-    position: absolute;
-    background-color: dodgerblue;
-    right: 0;
-    bottom: -14px;
-    border-bottom-right-radius: 14px;
-  } */
+  top: 0;
+  left: 50%;
+  width: 300px;
+  transform: translateX(-50%);
+  margin: 2rem 0;
+  z-index: 1;
 }
 
-.wrap {
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  height: 100vh;
+fieldset {
+  margin: 0 0 1rem 0;
+  padding: 0;
+  border: none;
+}
+
+legend {
+  font-weight: 400;
+}
+
+legend,
+label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+input[type='text']{
+  display: block;
+  padding: .5rem;
+  width: 100%;
+  background-color: white;
+  border-radius: .25rem;
+  border: 1px solid #e5e5e5;
+  outline: none;
+      
+  /* List some properties that might change */
+  transition-property: none;
+  transition-duration: none;
+  
+  
+}
+
+
+
+input[type='text'] {
+  height: 34px;
+}
+
+
+
+
+input[type='radio'] {
+  border-radius: 50%;
+  
+}
+
+
+
+button {
+  display: block;
+  margin: 3em auto;
+  padding: .5rem 2rem;
+  font-size: 125%;
+  color: white;
+  border: none;
+  border-radius: .25rem;
+  background-color: rgb(239,126,173);
+  outline: none;
+  box-shadow: 0 .4rem .1rem -.3rem rgba(0,0,0,.1);
+
+  /* We'll talk about this next */
+  transform: perspective(300px) scale(.95) translateZ(0);
+  transform-style: preserve-3d;
+
+  /* List the properties that you're looking to transition.
+     Try not to use 'all' */
+  transition-property: none;
+
+  /* This applies to all of the above properties */
+  transition-duration: none;
+    
+ 
 }
