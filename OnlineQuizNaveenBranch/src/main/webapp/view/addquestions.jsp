@@ -24,27 +24,27 @@
 		</c:forEach>
 		</fieldset>
 		  <fieldset>
-    <label for="option1">Question Description</label>
+   <legend>Question Description</legend>
     <input type="text" name="questiondescription" placeholder="Question Description">
   </fieldset>
   <fieldset>
-    <label for="option1">Option 1</label>
+    <legend>Option 1</legend>
     <input type="text" name="option1" placeholder="Option 1">
   </fieldset>
   <fieldset>
-    <label for="option2">Option 2</label>
+    <legend>Option 2</legend>
     <input type="text" name="option2" placeholder="Option 2">
   </fieldset>
   <fieldset>
-    <label for="option3">Option 3</label>
+   <legend>Option 3</legend>
     <input type="text" name="option3" placeholder="Option 3">
   </fieldset>
   <fieldset>
-    <label for="option4">Option 4</label>
+  <legend>Option 4</legend>
     <input type="text" name="option4" placeholder="Option 4">
   </fieldset>
   <fieldset>
-    <label for="correctoption">Correct Option</label>
+   <legend>Correct Option</legend>
     <input type="text" name="correctoption" placeholder="correct option">
   </fieldset>
 
