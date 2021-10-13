@@ -90,6 +90,15 @@ public class MainController {
 	
 //	/Student Module/
 	
+	@RequestMapping("/student/profile/{studentId}")
+	public ModelAndView getProfile(@PathVariable("studentId")int stdid) {
+		ModelAndView mv=new ModelAndView();
+		Student student=stdrepo.getById(stdid);
+		mv.addObject("student",student);
+		mv.setViewName("studentprofile");
+		return mv;
+	}
+	
 	@RequestMapping("/student/register")
 	public ModelAndView registerStudent(@RequestParam("name") String name,@RequestParam("email") String email,@RequestParam("password") String password) {
 		Student s=new Student();
