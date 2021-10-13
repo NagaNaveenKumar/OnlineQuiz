@@ -19,7 +19,7 @@
 		<form action="/getQuestions/${subject.subId}">
 		<div class="card">
   			<div class="container">
-    			<h4><b>${subject.subName}</b></h4>    				 
+    			<h4><strong>${subject.subName}</strong></h4>    				 
 			
    				 <button type="submit" class="button button">Start Quiz</button>
   			</div>

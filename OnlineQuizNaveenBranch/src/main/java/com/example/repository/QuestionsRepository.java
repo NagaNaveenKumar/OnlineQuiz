@@ -15,9 +15,9 @@ import com.example.beans.Questions;
 public interface QuestionsRepository extends JpaRepository<Questions, Integer> {
 	
 	@Query("from Questions where sub_id=?1")
-	List<Questions> getAllQuestionsBySubId(int sub_id);
+	List<Questions> getAllQuestionsBySubId(int subid);
 	
 	@Query("from Questions where ques_id=?1")
-	Questions getQuestionsById(int ques_id);
+	Questions getQuestionsById(int quesid);
 
 }

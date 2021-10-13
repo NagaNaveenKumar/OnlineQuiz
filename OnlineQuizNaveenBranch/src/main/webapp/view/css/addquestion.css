@@ -46,19 +46,14 @@ input[type='text']{
   border-radius: .25rem;
   border: 1px solid #e5e5e5;
   outline: none;
+   height: 34px;
       
   /* List some properties that might change */
   transition-property: none;
-  transition-duration: none;
-  
+  transition-duration: none;  
   
 }
 
-
-
-input[type='text'] {
-  height: 34px;
-}
 
 
 

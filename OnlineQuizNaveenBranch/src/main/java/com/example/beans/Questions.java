@@ -1,18 +1,15 @@
 package com.example.beans;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+
 
 @Entity
 public class Questions {
-	
-	
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int quesId;
@@ -23,6 +20,8 @@ public class Questions {
 	private String option3;
 	private String option4;
 	private String correctOption;
+	
+	
 	public int getQuesId() {
 		return quesId;
 	}
@@ -71,11 +70,5 @@ public class Questions {
 	public void setCorrectOption(String correctOption) {
 		this.correctOption = correctOption;
 	}
-	
-	
-	
-	
-	
-	
 	
 }

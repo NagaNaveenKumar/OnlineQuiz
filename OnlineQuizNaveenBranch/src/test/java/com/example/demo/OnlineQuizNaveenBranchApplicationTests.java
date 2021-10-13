@@ -8,6 +8,8 @@ class OnlineQuizNaveenBranchApplicationTests {
 
 	@Test
 	void contextLoads() {
+		//can't add something
+		throw new UnsupportedOperationException();
 	}
 
 }

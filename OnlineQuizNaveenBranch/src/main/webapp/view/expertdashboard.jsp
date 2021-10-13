@@ -27,19 +27,19 @@
   <div class="cards">
   
     <div class="card card-1">
-      <div class="card__icon"><i class="fas fa-bolt"></i></div>
-      <p class="card__exit"><i class="fas fa-times"></i></p>
+      <div class="card__icon"><em class="fas fa-bolt"></em></div>
+      <p class="card__exit"><em class="fas fa-times"></em></p>
       <h2 class="card__title"> To Add subject</h2>
       <p class="card__apply">
-        <a class="card__link" href="/add/subject">Click here<i class="fas fa-arrow-right"></i></a>
+        <a class="card__link" href="/add/subject">Click here<em class="fas fa-arrow-right"></em></a>
       </p>
     </div>
     <div class="card card-2">
-      <div class="card__icon"><i class="fas fa-bolt"></i></div>
-      <p class="card__exit"><i class="fas fa-times"></i></p>
+      <div class="card__icon"><em class="fas fa-bolt"></em></div>
+      <p class="card__exit"><em class="fas fa-times"></em></p>
       <h2 class="card__title">To Add Question</h2>
       <p class="card__apply">
-        <a class="card__link" href="/add/question">Click here <i class="fas fa-arrow-right"></i></a>
+        <a class="card__link" href="/add/question">Click here <em class="fas fa-arrow-right"></em></a>
       </p>
     </div>
   </div>
