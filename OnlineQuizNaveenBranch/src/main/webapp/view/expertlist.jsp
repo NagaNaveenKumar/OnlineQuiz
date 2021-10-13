@@ -37,11 +37,11 @@
 	
 <c:forEach var="expert" items="${experts}">
 <tr>
-<td class="text-left">${expert.expert_id}</td>
-<td class="text-left">${expert.expert_name}</td>
+<td class="text-left">${expert.expertId}</td>
+<td class="text-left">${expert.expertName}</td>
 <td class="text-left">
 				<form action="/delete/expert">
-  				<input type="hidden" name="id" value="${expert.expert_id}"/>
+  				<input type="hidden" name="id" value="${expert.expertId}"/>
   				<input type="submit" value="Delete"/>				 
   				</form>		
  </td>

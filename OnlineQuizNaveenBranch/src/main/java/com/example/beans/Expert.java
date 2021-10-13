@@ -10,27 +10,30 @@ public class Expert {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int expert_id;
-	private String expert_name;
-	private String expert_password;
-	public int getExpert_id() {
-		return expert_id;
+	private int expertId;
+	private String expertName;
+	private String expertPassword;
+	
+	public int getExpertId() {
+		return expertId;
 	}
-	public void setExpert_id(int expert_id) {
-		this.expert_id = expert_id;
+	public void setExpertId(int expertId) {
+		this.expertId = expertId;
 	}
-	public String getExpert_name() {
-		return expert_name;
+	public String getExpertName() {
+		return expertName;
 	}
-	public void setExpert_name(String expert_name) {
-		this.expert_name = expert_name;
+	public void setExpertName(String expertName) {
+		this.expertName = expertName;
 	}
-	public String getExpert_password() {
-		return expert_password;
+	public String getExpertPassword() {
+		return expertPassword;
 	}
-	public void setExpert_password(String expert_password) {
-		this.expert_password = expert_password;
+	public void setExpertPassword(String expertPassword) {
+		this.expertPassword = expertPassword;
 	}
+	
+	
 	
 	
 }

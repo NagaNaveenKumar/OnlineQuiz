@@ -35,15 +35,15 @@ setTimeout("CheckTime()",1000);
 		<ul >
 		<div name="quize">
 			<c:forEach var="question" items="${questions}">
-			 <h2 class="qestion">${question.ques_description}</h2>
+			 <h2 class="qestion">${question.quesDescription}</h2>
 				<li>
 					
-					<input type="hidden" name="questionId" value="${question.ques_id}"/><br/>
+					<input type="hidden" name="questionId" value="${question.quesId}"/><br/>
 					
-					<input type="radio" name="question_${question.ques_id}" value="${question.option1}"/>${question.option1}<br/>
-					<input type="radio" name="question_${question.ques_id}" value="${question.option2}"/>${question.option2}<br/>
-					<input type="radio" name="question_${question.ques_id}" value="${question.option3}"/>${question.option3}<br/>
-					<input type="radio" name="question_${question.ques_id}" value="${question.option4}"/>${question.option4}<br/>
+					<input type="radio" name="question_${question.quesId}" value="${question.option1}"/>${question.option1}<br/>
+					<input type="radio" name="question_${question.quesId}" value="${question.option2}"/>${question.option2}<br/>
+					<input type="radio" name="question_${question.quesId}" value="${question.option3}"/>${question.option3}<br/>
+					<input type="radio" name="question_${question.quesId}" value="${question.option4}"/>${question.option4}<br/>
 					
 				</li>
 			</c:forEach>

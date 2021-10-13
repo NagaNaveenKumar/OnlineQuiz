@@ -94,11 +94,11 @@ public class MainController {
 	@RequestMapping("/student/register")
 	public ModelAndView registerStudent(@RequestParam("name") String name,@RequestParam("email") String email,@RequestParam("password") String password) {
 		Student s=new Student();
-		s.setStd_name(name);
-		s.setStd_password(password);
+		s.setStdName(name);
+		s.setStdPassword(password);
 		s.setEmail(email);
 		stdrepo.save(s);
-		return new ModelAndView("redirect:/subjects/"+s.getStd_id());
+		return new ModelAndView("redirect:/subjects/"+s.getStdId());
 	}
 	
 	@GetMapping("/student/login")
@@ -113,7 +113,7 @@ public class MainController {
 		ModelAndView mv=new ModelAndView();
 		Student s=stdrepo.findByNameAndPassword(name, password);
 		if(s!=null) {
-			return new ModelAndView("redirect:/subjects/"+s.getStd_id());
+			return new ModelAndView("redirect:/subjects/"+s.getStdId());
 		}else {
 			mv.setViewName("login");
 		}
@@ -143,7 +143,7 @@ public class MainController {
 			int quesid=Integer.parseInt(questionId);
 			Questions q=quesrepo.getQuestionsById(quesid);
 			String selectedOption=req.getParameter("question_"+questionId);
-			String correctOption=q.getCorrect_option();
+			String correctOption=q.getCorrectOption();
 			if(selectedOption==null) {
 				selectedOption="";
 			}
@@ -154,8 +154,8 @@ public class MainController {
 			}
 		}
 		Results res=new Results();
-		res.setStd_id(stdid);
-		res.setSub_id(subid);
+		res.setStdId(stdid);
+		res.setSubId(subid);
 		res.setScore(result);
 		resrepo.save(res);
 		mv.addObject("result",result);
@@ -208,13 +208,13 @@ public class MainController {
 		String option4=req.getParameter("option4");
 		String correctoption=req.getParameter("correctoption");
 		Subject subject=subrepo.getByName(subName);
-		ques.setSub_id(subject.getSubId());
-		ques.setQues_description(quesdescription);
+		ques.setSubId(subject.getSubId());
+		ques.setQuesDescription(quesdescription);
 		ques.setOption1(option1);
 		ques.setOption2(option2);
 		ques.setOption3(option3);
 		ques.setOption4(option4);
-		ques.setCorrect_option(correctoption);
+		ques.setCorrectOption(correctoption);
 		quesrepo.save(ques);
 		return new ModelAndView(REDIRECTTOED);
 	}
@@ -271,8 +271,8 @@ public class MainController {
 	@PostMapping("/add/expert")
 	public ModelAndView addExpert(@RequestParam("name") String name,@RequestParam("password") String password) {
 		Expert e=new Expert();
-		e.setExpert_name(name);
-		e.setExpert_password(password);
+		e.setExpertName(name);
+		e.setExpertPassword(password);
 		expertrepo.save(e);
 		return new ModelAndView(REDIRECTTOAD);
 	}
@@ -289,8 +289,8 @@ public class MainController {
 	@PostMapping("/add/student")
 	public ModelAndView addStudent(@RequestParam("name") String name,@RequestParam("password") String password,@RequestParam("email")String email) {
 		Student s=new Student();
-		s.setStd_name(name);
-		s.setStd_password(password);
+		s.setStdName(name);
+		s.setStdPassword(password);
 		s.setEmail(email);
 		stdrepo.save(s);
 		return new ModelAndView(REDIRECTTOAD);
@@ -346,8 +346,8 @@ public class MainController {
 	public ModelAndView addAdmin(@RequestParam("name") String name,@RequestParam("password") String password) {
 		ModelAndView mv=new ModelAndView();
 		Admin a=new Admin();
-		a.setAdmin_name(name);
-		a.setAdmin_password(password);
+		a.setAdminName(name);
+		a.setAdminPassword(password);
 		adminrepo.save(a);
 		mv.setViewName("subjects");
 		return mv;

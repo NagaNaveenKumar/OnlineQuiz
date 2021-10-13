@@ -11,27 +11,28 @@ public class Results {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int quiz_id;
-	private int std_id;
-	private int sub_id;
+	private int quizId;
+	private int stdId;
+	private int subId;
 	private double score;
-	public int getQuiz_id() {
-		return quiz_id;
+	
+	public int getQuizId() {
+		return quizId;
 	}
-	public void setQuiz_id(int quiz_id) {
-		this.quiz_id = quiz_id;
+	public void setQuizId(int quizId) {
+		this.quizId = quizId;
 	}
-	public int getStd_id() {
-		return std_id;
+	public int getStdId() {
+		return stdId;
 	}
-	public void setStd_id(int std_id) {
-		this.std_id = std_id;
+	public void setStdId(int stdId) {
+		this.stdId = stdId;
 	}
-	public int getSub_id() {
-		return sub_id;
+	public int getSubId() {
+		return subId;
 	}
-	public void setSub_id(int sub_id) {
-		this.sub_id = sub_id;
+	public void setSubId(int subId) {
+		this.subId = subId;
 	}
 	public double getScore() {
 		return score;
@@ -39,6 +40,7 @@ public class Results {
 	public void setScore(double score) {
 		this.score = score;
 	}
+	
 	
 	
 }

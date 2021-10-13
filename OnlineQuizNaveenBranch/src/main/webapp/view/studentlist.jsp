@@ -36,12 +36,12 @@
 	
 <c:forEach var="student" items="${students}">
 <tr>
-<td class="text-left">${student.std_id}</td>
-<td class="text-left">${student.std_name}</td>
+<td class="text-left">${student.stdId}</td>
+<td class="text-left">${student.stdName}</td>
 <td class="text-left">${student.email}</td>
 <td class="text-left">
 				<form action="/delete/student">
-  				<input type="hidden" name="id" value="${student.std_id}"/>
+  				<input type="hidden" name="id" value="${student.stdId}"/>
   				<input type="submit" value="Delete"/>				 
   				</form>
  </td>

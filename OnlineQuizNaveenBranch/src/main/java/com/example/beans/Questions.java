@@ -15,31 +15,31 @@ public class Questions {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int ques_id;
-	private int sub_id;
-	private String ques_description;
+	private int quesId;
+	private int subId;
+	private String quesDescription;
 	private String option1;
 	private String option2;
 	private String option3;
 	private String option4;
-	private String correct_option;
-	public int getQues_id() {
-		return ques_id;
+	private String correctOption;
+	public int getQuesId() {
+		return quesId;
 	}
-	public void setQues_id(int ques_id) {
-		this.ques_id = ques_id;
+	public void setQuesId(int quesId) {
+		this.quesId = quesId;
 	}
-	public int getSub_id() {
-		return sub_id;
+	public int getSubId() {
+		return subId;
 	}
-	public void setSub_id(int sub_id) {
-		this.sub_id = sub_id;
+	public void setSubId(int subId) {
+		this.subId = subId;
 	}
-	public String getQues_description() {
-		return ques_description;
+	public String getQuesDescription() {
+		return quesDescription;
 	}
-	public void setQues_description(String ques_description) {
-		this.ques_description = ques_description;
+	public void setQuesDescription(String quesDescription) {
+		this.quesDescription = quesDescription;
 	}
 	public String getOption1() {
 		return option1;
@@ -65,18 +65,14 @@ public class Questions {
 	public void setOption4(String option4) {
 		this.option4 = option4;
 	}
-	public String getCorrect_option() {
-		return correct_option;
+	public String getCorrectOption() {
+		return correctOption;
 	}
-	public void setCorrect_option(String correct_option) {
-		this.correct_option = correct_option;
+	public void setCorrectOption(String correctOption) {
+		this.correctOption = correctOption;
 	}
-	@Override
-	public String toString() {
-		return "Questions [ques_id=" + ques_id + ", sub_id=" + sub_id + ", ques_description=" + ques_description
-				+ ", option1=" + option1 + ", option2=" + option2 + ", option3=" + option3 + ", option4=" + option4
-				+ ", correct_option=" + correct_option + "]";
-	}
+	
+	
 	
 	
 	

@@ -38,9 +38,9 @@
 	
 <c:forEach var="result" items="${results}">
 <tr>
-<td class="text-left">${result.quiz_id}</td>
-<td class="text-left">${result.std_id}</td>
-<td class="text-left">${result.sub_id}</td>
+<td class="text-left">${result.quizId}</td>
+<td class="text-left">${result.stdId}</td>
+<td class="text-left">${result.subId}</td>
 <td class="text-left">${result.score}</td>
 </tr>
 </c:forEach>
