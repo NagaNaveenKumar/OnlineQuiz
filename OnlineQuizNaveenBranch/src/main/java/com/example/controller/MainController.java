@@ -60,28 +60,26 @@ public class MainController {
 	
 	
 	@RequestMapping("/")
-	public String home() {
-		System.out.println("home");
-		return "home";
+	public ModelAndView home() {
+		return new ModelAndView("home");
 	}
 	@RequestMapping("/expertlogin")
-	public String expertlogin() {
-		return "expertlogin";
+	public ModelAndView expertlogin() {
+		return new ModelAndView("expertlogin");
 	}
 	
 	@RequestMapping("/adminlogin")
-	public String adminlogin() {
-		return "adminlogin";
+	public ModelAndView adminlogin() {
+		return new ModelAndView("adminlogin");
 	}
 	
 	@GetMapping("/subjects/{std_id}")
-	public ModelAndView getSubjects(@PathVariable("std_id") int std_id) {
+	public ModelAndView getSubjects(@PathVariable("std_id") int stdid) {
 		List<Subject> s=(List<Subject>) subrepo.findAll();
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("std_id",std_id);
+		mv.addObject("std_id",stdid);
 		mv.addObject("subjects",s);
 		mv.setViewName("subjects");
-		System.out.println(mv.getModel());
 		return mv;
 	}
 	
@@ -101,7 +99,6 @@ public class MainController {
 	@GetMapping("/student/login")
 	public ModelAndView studentLogin() {
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("message", "");
 		mv.setViewName("login");
 		return mv;
 	}
@@ -110,39 +107,21 @@ public class MainController {
 	public ModelAndView checkloginStudent(@RequestParam("name") String name,@RequestParam("password") String password) {
 		ModelAndView mv=new ModelAndView();
 		Student s=stdrepo.findByNameAndPassword(name, password);
-		System.out.println(s);
 		if(s!=null) {
-			ModelAndView modelandview=new ModelAndView("redirect:/subjects/"+s.getStd_id());
-			return modelandview;
+			return new ModelAndView("redirect:/subjects/"+s.getStd_id());
 		}else {
-			mv.addObject("message","Invalid username/password");
 			mv.setViewName("login");
 		}
 		return mv;
 	}
 	
-	@GetMapping("/submitquiz")
-	public ModelAndView getResult() {	
-		ModelAndView mv=new ModelAndView();
-		return mv;
-	}
-
-//	@GetMapping("/getQuestions/{sub_id}")
-//	public ModelAndView getQuestions(@PathVariable int sub_id) {
-//		List<Questions> quests=quesrepo.getAllQuestionsBySubId(sub_id);
-//		ModelAndView mv=new ModelAndView();
-//		mv.addObject("sub_id",sub_id);
-//		mv.addObject("questions", quests);
-//		mv.setViewName("questions");
-//		return mv;
-//	}
 	
 	@GetMapping("/getQuestions/{sub_id}")
-	public ModelAndView getQuestions(@PathVariable int sub_id,@RequestParam("studentId") int std_id) {
-		List<Questions> quests=quesrepo.getAllQuestionsBySubId(sub_id);
+	public ModelAndView getQuestions(@PathVariable("sub_id") int subid,@RequestParam("studentId") int stdid) {
+		List<Questions> quests=quesrepo.getAllQuestionsBySubId(subid);
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("std_id", std_id);
-		mv.addObject("sub_id",sub_id);
+		mv.addObject("std_id", stdid);
+		mv.addObject("sub_id",subid);
 		mv.addObject("questions", quests);
 		mv.setViewName("questions");
 		return mv;
@@ -150,18 +129,16 @@ public class MainController {
 	
 	@GetMapping("/getResult")
 	public ModelAndView getResult(HttpServletRequest req) {
-		int std_id=Integer.parseInt(req.getParameter("studentId"));
-		int sub_id=Integer.parseInt(req.getParameter("subjectId"));
+		int stdid=Integer.parseInt(req.getParameter("studentId"));
+		int subid=Integer.parseInt(req.getParameter("subjectId"));
 		ModelAndView mv=new ModelAndView();
 		String []questionIds=req.getParameterValues("questionId");
 		double result=0.0;
 		for(String questionId:questionIds) {
-			int ques_id=Integer.parseInt(questionId);
-			Questions q=quesrepo.getQuestionsById(ques_id);
+			int quesid=Integer.parseInt(questionId);
+			Questions q=quesrepo.getQuestionsById(quesid);
 			String selectedOption=req.getParameter("question_"+questionId);
 			String correctOption=q.getCorrect_option();
-			System.out.println("selectedOption:"+selectedOption);
-			System.out.println("correctOption:"+correctOption);
 			if(selectedOption==null) {
 				selectedOption="";
 			}
@@ -172,8 +149,8 @@ public class MainController {
 			}
 		}
 		Results res=new Results();
-		res.setStd_id(std_id);
-		res.setSub_id(sub_id);
+		res.setStd_id(stdid);
+		res.setSub_id(subid);
 		res.setScore(result);
 		resrepo.save(res);
 		mv.addObject("result",result);
@@ -186,9 +163,7 @@ public class MainController {
 //	/Expert Module/
 	@GetMapping("/expertdashboard")
 	public ModelAndView expertDashboard() {
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("/expertdashboard");
-		return mv;
+		return new ModelAndView("expertdashboard");
 	}
 	
 	@GetMapping("/add/subject")
@@ -202,11 +177,9 @@ public class MainController {
 	
 	@GetMapping("/addsubject")
 	public ModelAndView addSubject(@RequestParam("subjectName") String subjectName) {
-		System.out.println(subjectName);
 		Subject s=new Subject();
 		s.setSubName(subjectName);
 		subrepo.save(s);
-		System.out.println(s.getSubId());
 		return new ModelAndView("redirect:/add/subject");
 	}
 	
@@ -229,9 +202,7 @@ public class MainController {
 		String option3=req.getParameter("option3");
 		String option4=req.getParameter("option4");
 		String correctoption=req.getParameter("correctoption");
-		System.out.println(subName);
 		Subject subject=subrepo.getByName(subName);
-		System.out.println(subject);
 		ques.setSub_id(subject.getSubId());
 		ques.setQues_description(quesdescription);
 		ques.setOption1(option1);
@@ -240,26 +211,20 @@ public class MainController {
 		ques.setOption4(option4);
 		ques.setCorrect_option(correctoption);
 		quesrepo.save(ques);
-		System.out.println(ques.getQues_id());
 		return new ModelAndView("redirect:/expertdashboard");
 	}
 	
 	@GetMapping("/expert/login")
-	public ModelAndView expertLogin() {
-		ModelAndView mv=new ModelAndView();
-		mv.addObject("message", "");
-		mv.setViewName("expertlogin");
-		return mv;
+	public ModelAndView expertlogin1() {
+		return new ModelAndView("expertlogin");
 	}
 	
 	@GetMapping("/check/expert/login")
 	public ModelAndView checkExpert(@RequestParam("name") String name,@RequestParam("password") String password) {
 		ModelAndView mv=new ModelAndView();
 		Expert e=expertrepo.findByNameAndPassword(name, password);
-		System.out.println(e);
 		if(e!=null) {
-			ModelAndView modelandview=new ModelAndView("redirect:/expertdashboard");
-			return modelandview;
+			return new ModelAndView("redirect:/expertdashboard");
 		}else {
 			mv.addObject("message","Invalid username/password");
 			mv.setViewName("expertlogin");
@@ -277,7 +242,7 @@ public class MainController {
 	}
 	
 	@GetMapping("/admin/login")
-	public ModelAndView adminLogin() {
+	public ModelAndView adminlogin1() {
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("message", "");
 		mv.setViewName("adminlogin");
@@ -289,8 +254,7 @@ public class MainController {
 		ModelAndView mv=new ModelAndView();
 		Admin a=adminrepo.findByNameAndPassword(name, password);
 		if(a!=null) {
-			ModelAndView modelandview=new ModelAndView("redirect:/admindashboard/");
-			return modelandview;
+			return new ModelAndView("redirect:/admindashboard/");
 		}else {
 			mv.addObject("message","Invalid username/password");
 			mv.setViewName("adminlogin");
@@ -303,16 +267,12 @@ public class MainController {
 	
 	@GetMapping("/addexpert")
 	public ModelAndView addExpert() {
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("addexpert");
-		return mv;
+		return new ModelAndView("addexpert");
 	}
 	
 	@GetMapping("/addstudent")
 	public ModelAndView addStudent() {
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("addstudent");
-		return mv;
+		return new ModelAndView("addstudent");
 	}
 	
 	@PostMapping("/add/expert")
@@ -321,15 +281,14 @@ public class MainController {
 		e.setExpert_name(name);
 		e.setExpert_password(password);
 		expertrepo.save(e);
-		ModelAndView mv=new ModelAndView();
 		return new ModelAndView("redirect:/admindashboard");
 	}
 	
 //	/Delete Expert/
 	@GetMapping("/delete/expert")
 	public ModelAndView deleteExpert(@RequestParam("id")String id) {
-		int expert_id=Integer.parseInt(id);
-		expertrepo.deleteById(expert_id);
+		int expertid=Integer.parseInt(id);
+		expertrepo.deleteById(expertid);
 		return new ModelAndView("redirect:/admindashboard");
 	}
 	
@@ -347,8 +306,8 @@ public class MainController {
 //	/Delete Student/
 	@GetMapping("/delete/student")
 	public ModelAndView deleteStudent(@RequestParam("id")String id) {
-		int std_id=Integer.parseInt(id);
-		stdrepo.deleteById(std_id);
+		int stdid=Integer.parseInt(id);
+		stdrepo.deleteById(stdid);
 		return new ModelAndView("redirect:/admindashboard");
 	}
 	
