@@ -64,9 +64,7 @@ quiz_id int auto_increment,
 std_id int,
 sub_id int,
 score double,
-primary key(quiz_id),
-foreign key(std_id) references student(std_id),
-foreign key(sub_id) references subject(sub_id));
+primary key(quiz_id));
 
 select * from subject;
 
