@@ -29,19 +29,20 @@
           </div>
           <div class="card-body pt-0">
             <table class="table table-bordered">
+            	<caption>Student Profile</caption>
               <tr>
-                <th scope="col" width="30%">Student Id</th>
-                <td width="2%">:</td>
+                <th scope="col" style="width:30%">Student Id</th>
+                <td style="width:2%">:</td>
                 <td>${student.stdId}</td>
               </tr>
               <tr>
-                <th scope="col" width="30%">Student Name</th>
-                <td width="2%">:</td>
+                <th scope="col" style="width:30%">Student Name</th>
+                <td style="width:2%">:</td>
                 <td>${student.stdName}</td>
               </tr>
               <tr>
-                <th scope="col" width="30%">Email</th>
-                <td width="2%">:</td>
+                <th scope="col" style="width:30%">Email</th>
+                <td style="width:2%">:</td>
                 <td>${student.email}</td>
               </tr>
             </table>
