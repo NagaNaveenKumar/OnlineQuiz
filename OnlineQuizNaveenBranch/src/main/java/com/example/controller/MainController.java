@@ -236,7 +236,7 @@ public class MainController {
 		if(e!=null) {
 			return new ModelAndView(REDIRECTTOED);
 		}else {
-			mv.setViewName("expertlogin");
+			mv.setViewName(EXPERTLOGIN);
 		}
 		return mv;
 	}
@@ -339,16 +339,7 @@ public class MainController {
 		mv.setViewName("studentresults");
 		return mv;
 	}
-//	
-//	/Controller Module/
-//	@PostMapping("/controller/login")
-//	public ModelAndView checkController(@RequestParam("name") String name,@RequestParam("password") String password) {
-//		if(name.equals("appcontroller") && password.equals("controller@123")) {
-//			return new ModelAndView("redirect:/subjects");
-//		}
-//		return new ModelAndView("redirect:/subjects");
-//	}
-//	
+
 //	/Add Admin/
 	@PostMapping("/add/admin")
 	public ModelAndView addAdmin(@RequestParam("name") String name,@RequestParam("password") String password) {

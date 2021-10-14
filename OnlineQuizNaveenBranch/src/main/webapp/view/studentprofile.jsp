@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="/view/css/studentprofile.css">
@@ -25,22 +25,22 @@
       <div class="col-lg-8">
         <div class="card shadow-sm">
           <div class="card-header bg-transparent border-0">
-            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+            <h3 class="mb-0"><em class="far fa-clone pr-1"></em>General Information</h3>
           </div>
           <div class="card-body pt-0">
             <table class="table table-bordered">
               <tr>
-                <th width="30%">Student Id</th>
+                <th scope="col" width="30%">Student Id</th>
                 <td width="2%">:</td>
                 <td>${student.stdId}</td>
               </tr>
               <tr>
-                <th width="30%">Student Name</th>
+                <th scope="col" width="30%">Student Name</th>
                 <td width="2%">:</td>
                 <td>${student.stdName}</td>
               </tr>
               <tr>
-                <th width="30%">Email</th>
+                <th scope="col" width="30%">Email</th>
                 <td width="2%">:</td>
                 <td>${student.email}</td>
               </tr>
