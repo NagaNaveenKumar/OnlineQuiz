@@ -60,8 +60,9 @@ public class MainController {
 	/*security*/
     @GetMapping("/")
     public String root() {
-        return "index";
+        return "home";
     }
+    
 
     @GetMapping("/login")
     public String login(Model model) {
